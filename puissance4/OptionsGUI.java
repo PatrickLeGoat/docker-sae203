@@ -27,7 +27,6 @@ public class OptionsGUI extends JFrame implements ActionListener {
 
 	JButton ok = new JButton("Ok");
 	
-	/** Creates a new instance of OptionsGUI for initializing an instance of Options */
 	public OptionsGUI(Options opts) {
 		
 		super("Options de jeu");
@@ -47,7 +46,7 @@ public class OptionsGUI extends JFrame implements ActionListener {
 		pane.add(lignesColPane);
 		
 		
-		// R�seau
+		
 		JPanel serveurClientPane = new JPanel(new BorderLayout());
 		serveurClient.add(server);
 		serveurClient.add(client);
@@ -66,7 +65,6 @@ public class OptionsGUI extends JFrame implements ActionListener {
 		
 		pane.add(networkPane);
                 
-		// Bouton Ok
 		ok.addActionListener(this);
 		
 		buildConstraints(constraints, 1, 3, 1, 1, 0, 10);
@@ -87,11 +85,11 @@ public class OptionsGUI extends JFrame implements ActionListener {
 	
 	
 	public void buildConstraints (GridBagConstraints gbc, int gx, int gy, int gw, int gh, int wx, int wy) {
-		gbc.gridx = gx;			// Coordonn�es dans la "grille"
+		gbc.gridx = gx;			
 		gbc.gridy = gy;
-		gbc.gridwidth = gw;		// Nombre de cellules sur lesquelles s'�tend l'objet
+		gbc.gridwidth = gw;		
 		gbc.gridheight = gh; 
-		gbc.weightx = wx;		// "Largeur", en proportion
+		gbc.weightx = wx;		
 		gbc.weighty = wy;
 	}
 	
@@ -124,19 +122,12 @@ public class OptionsGUI extends JFrame implements ActionListener {
 		}
 		
 		else if (src == networkOn || src == client || src == server)
-			setNetworkOptionsEnabled(networkOn.isSelected()); // enables or disables the network options
+			setNetworkOptionsEnabled(networkOn.isSelected()); 
 		
 		
 		
 	}
-	
-	/** Makes computer options enabled or not whether the user enabled the network option or not
-	 * @param b if true, makes computer options available (enabled), if false makes them disabled
-	 */	
-	
-	/** Makes network options enabled or not whether the user enabled the network option or not
-	 * @param b if true, makes network options available (enabled), if false makes them disabled
-	 */	
+		
 	public void setNetworkOptionsEnabled(boolean b) {
 		server.setEnabled(b);
 		client.setEnabled(b);

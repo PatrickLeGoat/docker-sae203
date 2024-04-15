@@ -5,7 +5,7 @@ public class Saisie {
 	
 		String valeur;
 	
-		while (true) {	// On boucle tant que l'utilisateur n'a pas entre un entier
+		while (true) {	
 			try {
 				valeur = JOptionPane.showInputDialog(null, message, titre, JOptionPane.QUESTION_MESSAGE);
 				return Integer.parseInt(valeur);
@@ -29,10 +29,7 @@ public class Saisie {
 		
 	}
 	
-	/** Affiche un message d'erreur avec un showMessageDialog
-	 * @param message Message e afficher
-	 * @param titre Titre de la fenetre de message
-	 */	
+	
 	public static void erreurMsgOk(String message, String titre) {
 		
 		JOptionPane.showMessageDialog(null, message, titre, JOptionPane.ERROR_MESSAGE);

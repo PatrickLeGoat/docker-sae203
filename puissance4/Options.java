@@ -1,7 +1,7 @@
 public class Options {
-	private int nbRow;			// Nombre de lignes
-	private int nbCol;			// Nombre de colonnes
-	boolean computerOn = false;	// Ordinateur active ou non
+	private int nbRow;			
+	private int nbCol;			
+	boolean computerOn = false;	
 	boolean computerStarts = false;
 	boolean netOn = false;
 	boolean serveur = false;
@@ -21,9 +21,7 @@ public class Options {
 	}
 	
 	
-	/** Regle les dimensions du jeu
-	 * @param initSize Definit si le plateau de jeu doit etre initalise avec la taille entree
-	 */
+	
 	public void setSize(int nbRow, int nbCol, boolean initSize) {
 		this.nbRow = nbRow;
 		this.nbCol = nbCol;
@@ -31,7 +29,6 @@ public class Options {
 			initSize(nbRow, nbCol);
 	}
 	
-	/** Initialise le plateau de jeu */
 	public void initSize(int nbRow, int nbCol) {
 		jeu.plateau = new Grille(nbRow, nbCol, jeu);
 		jeu.plateau.setVisible(true);
@@ -39,12 +36,10 @@ public class Options {
 		jeu.historique = new int[nbRow * nbCol];
 	}
 	
-	/** Retourne le nombre de colonnes du jeu */
 	public int getGameWidth() {
 		return nbCol;
 	}
 	
-	/** Retourne le nombre de lignes du jeu */
 	public int getGameHeight() {
 		return nbRow;
 	}
@@ -57,7 +52,6 @@ public class Options {
 			if (!serveur) {
 				sc = new Client(ip, jeu);
 				
-				// From here, the server will have sent the server game size, here is the code to receive the information
 				String entree1 = null;
 				while(entree1 == null)
 					entree1 = sc.in.readLine();

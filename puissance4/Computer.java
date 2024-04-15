@@ -50,12 +50,6 @@ class Computer {
 		nbCoups--;
 		
 		
-		/*for (int i = 0; i < matJeu.length; i++) {
-			for (int j = 0; j < matJeu[0].length; j++) {
-				System.out.print(matJeu[i][j] + " ");
-			}
-		}*/
-		
 		int colResult = -2; // POUR TESTER
 		for (col = 0; col < matJeu[0].length; col++) {
 			ligne = searchLine(col);
@@ -149,8 +143,7 @@ class Computer {
 						return -1;
 					
 				}
-			} // fin du for
-			//return minMax;
+			} 
 			return 0;
 			
 		}
@@ -164,7 +157,7 @@ class Computer {
 		int note;
 		int ligne;
 		int col;
-		byte jVal = 1; // Variable contenant la valeur du joueur
+		byte jVal = 1; 
 		if (joueur)
 			jVal = 2;
 		
@@ -344,7 +337,7 @@ class Computer {
 	
 	
 	
-	public boolean joueurGagne(byte joueur, int ligneM, int colM) {  // le M majuscule indique que c'est une ligne correspondant e la position dans la matrice
+	public boolean joueurGagne(byte joueur, int ligneM, int colM) {  
 		if (horiGagne(joueur, ligneM, colM) || vertGagne(joueur, ligneM, colM) || diag1Gagne(joueur, ligneM, colM) || diag2Gagne(joueur, ligneM, colM))
 			return true;
 		
@@ -352,7 +345,7 @@ class Computer {
 	}
 	
 	public boolean horiGagne(byte jVal, int ligneM, int colM) {
-		int nbAlign = 0;  // nombre de pions qui sont alignes les uns e la suite des autres
+		int nbAlign = 0;  // nombre de pions qui sont alignes les uns a la suite des autres
 		int colMin = colM - 3;
 		if (colMin <= 0)
 			colMin = 0;
@@ -374,7 +367,7 @@ class Computer {
 	}
 	
 	public boolean vertGagne(byte jVal, int ligneM, int colM) {
-		int nbAlign = 0;  // nombre de pions qui sont alignes les uns e la suite des autres
+		int nbAlign = 0;  // nombre de pions qui sont alignes les uns a la suite des autres
 		int ligneMin = ligneM - 3;
 		if (ligneMin <= 0)
 			ligneMin = 0;
@@ -405,17 +398,17 @@ class Computer {
 		int colMax = colM;
 		
 		int compteur = 0;
-		while (ligneMax + 1 < matJeu.length && colMax + 1 < matJeu[0].length && compteur <= 2) {  //On va en bas e droite du plateau
+		while (ligneMax + 1 < matJeu.length && colMax + 1 < matJeu[0].length && compteur <= 2) {  //On va en bas a droite du plateau
 			ligneMax++;
 			colMax++;
 			compteur++;   // on ne va que 3 cases en bas e droite au maximum
 		}
 		
 		compteur = 0;
-		while (ligneMin >= 1 && colMin >= 1 && compteur <= 2) {  //On va en haut e gauche du plateau de jeu
+		while (ligneMin >= 1 && colMin >= 1 && compteur <= 2) {  //On va en haut a gauche du plateau de jeu
 			ligneMin--;
 			colMin--;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		ligneM = ligneMin;
@@ -446,17 +439,17 @@ class Computer {
 		int colMax = colM;
 		
 		int compteur = 0;
-		while (ligneMax + 1 < matJeu.length && colMin >= 1 && compteur <= 2) {  //On va en bas e gauche du plateau
+		while (ligneMax + 1 < matJeu.length && colMin >= 1 && compteur <= 2) {  //On va en bas a gauche du plateau
 			ligneMax++;
 			colMin--;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		compteur = 0;
-		while (ligneMin >= 1 && colMax + 1 < matJeu[0].length && compteur <= 2) {  //On va en haut e droite du plateau de jeu
+		while (ligneMin >= 1 && colMax + 1 < matJeu[0].length && compteur <= 2) {  //On va en haut a droite du plateau de jeu
 			ligneMin--;
 			colMax++;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		ligneM = ligneMax;

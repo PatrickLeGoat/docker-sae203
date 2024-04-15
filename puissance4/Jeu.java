@@ -2,15 +2,15 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class Jeu {
-	Grille plateau;		// Juste le graphisme
-	byte[][] matJeu;	// La matrice qui contiendra la partie
-	int nbCoups;		// Contient le nombre de coups joues (detection partie nulle)
-	boolean enCours;	// Indique si la partie est en cours ou terminee
-	boolean joueur;		// Indique le joueur en cours
-	int[] historique;	// Enregistre les colonnes jouees
-	Options opts;		// Une fenetre d'options
+	Grille plateau;		
+	byte[][] matJeu;	
+	int nbCoups;		
+	boolean enCours;	
+	boolean joueur;		
+	int[] historique;	
+	Options opts;		
 	Computer deep;	
-	boolean lock;  // Pour le jeu en reseau, bloque l'utilisateur e qui ce n'est pas le tour (necessaire au multi-threading)
+	boolean lock;  
 	
 	public Jeu(boolean optTrue) {
 		if (optTrue)
@@ -19,14 +19,9 @@ public class Jeu {
 		enCours = true;
 	}
 
-	/** Test if a player has won
-	 * @param joueur search winning position for the player joueur
-	 * @param ligneM row just played by joueur
-	 * @param colM col line just played by joueur
-	 * @return true if there is a winning position, false if not
-	 */	
-	public boolean joueurGagne(boolean joueur, int ligneM, int colM) {  // le M majuscule indique que c'est une ligne correspondant e la position dans la matrice
-		byte jVal = 1; // Variable contenant la valeur du joueur, un byte suffit
+	
+	public boolean joueurGagne(boolean joueur, int ligneM, int colM) {  
+		byte jVal = 1; 
 		if (joueur)
 			jVal = 2;
 		
@@ -36,14 +31,9 @@ public class Jeu {
 		return false;
 	}
 	
-	/** Test if a player has won horizontally
-	 * @param jVal search winning position for the player jVal
-	 * @param ligneM row just played by jVal
-	 * @param colM col line just played by jVal
-	 * @return true if there is a horizontal winning position, false if not
-	 */	
+	
 	public boolean horiGagne(byte jVal, int ligneM, int colM) {
-		int nbAlign = 0;  // nombre de pions qui sont alignes les uns e la suite des autres
+		int nbAlign = 0;  
 		int colMin = colM - 3;
 		if (colMin <= 0)
 			colMin = 0;
@@ -64,14 +54,9 @@ public class Jeu {
 		return false;
 	}
 	
-	/** Test if a player has won vertically
-	 * @param jVal search winning position for the player jVal
-	 * @param ligneM row just played by jVal
-	 * @param colM col line just played by jVal
-	 * @return true if there is a vertical winning position, false if not
-	 */	
+	
 	public boolean vertGagne(byte jVal, int ligneM, int colM) {
-		int nbAlign = 0;  // nombre de pions qui sont alignes les uns e la suite des autres
+		int nbAlign = 0;  
 		int ligneMin = ligneM - 3;
 		if (ligneMin <= 0)
 			ligneMin = 0;
@@ -93,12 +78,6 @@ public class Jeu {
 		return false;
 	}
 	
-	/** Test if a player has won "antislashly"
-	 * @param jVal search winning position for the player jVal
-	 * @param ligneM row just played by jVal
-	 * @param colM col line just played by jVal
-	 * @return true if there is an "antislash" winning position, false if not
-	 */	
 	public boolean diag1Gagne(byte jVal, int ligneM, int colM) {
 		int nbAlign = 0;
 		int ligneMin = ligneM;
@@ -107,17 +86,17 @@ public class Jeu {
 		int colMax = colM;
 		
 		int compteur = 0;
-		while (ligneMax + 1 < opts.getGameHeight() && colMax + 1 < opts.getGameWidth() && compteur <= 2) {  //On va en bas e droite du plateau
+		while (ligneMax + 1 < opts.getGameHeight() && colMax + 1 < opts.getGameWidth() && compteur <= 2) {  //On va en bas a droite du plateau
 			ligneMax++;
 			colMax++;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		compteur = 0;
-		while (ligneMin >= 1 && colMin >= 1 && compteur <= 2) {  //On va en haut e gauche du plateau de jeu
+		while (ligneMin >= 1 && colMin >= 1 && compteur <= 2) {  //On va en haut a gauche du plateau de jeu
 			ligneMin--;
 			colMin--;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		ligneM = ligneMin;
@@ -139,12 +118,6 @@ public class Jeu {
 		return false;
 	}
 	
-	/** Test if a player has won "slashly"
-	 * @param jVal search winning position for the player jVal
-	 * @param ligneM row just played by jVal
-	 * @param colM col line just played by jVal
-	 * @return true if there is a "slash" winning position, false if not
-	 */	
 	public boolean diag2Gagne(byte jVal, int ligneM, int colM) {
 		int nbAlign = 0;
 		int ligneMin = ligneM;
@@ -153,17 +126,17 @@ public class Jeu {
 		int colMax = colM;
 		
 		int compteur = 0;
-		while (ligneMax + 1 < opts.getGameHeight() && colMin >= 1 && compteur <= 2) {  //On va en bas e gauche du plateau
+		while (ligneMax + 1 < opts.getGameHeight() && colMin >= 1 && compteur <= 2) {  //On va en bas a gauche du plateau
 			ligneMax++;
 			colMin--;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		compteur = 0;
-		while (ligneMin >= 1 && colMax + 1 < opts.getGameWidth() && compteur <= 2) {  //On va en haut e droite du plateau de jeu
+		while (ligneMin >= 1 && colMax + 1 < opts.getGameWidth() && compteur <= 2) {  //On va en haut a droite du plateau de jeu
 			ligneMin--;
 			colMax++;
-			compteur++;   // on ne va que 3 cases en bas e droite au maximum
+			compteur++;   // on ne va que 3 cases en bas a droite au maximum
 		}
 		
 		ligneM = ligneMax;
@@ -185,12 +158,10 @@ public class Jeu {
 		return false;
 	}
 	
-	/** Tries to make a col played
-	 * @param col col to be played
-	 */	
+		
 	public void jouer(int col) {
-		boolean coupValable;	// Contient la validite du coup que le jouer veut jouer
-		int ligne = 0;		// Le oe sera stockee la ligne jouee, le 0 sert pour le compilateur
+		boolean coupValable;	
+		int ligne = 0;		
 		
 		coupValable = false;
 			
@@ -202,11 +173,7 @@ public class Jeu {
 		
 	}
 
-	/** Makes a cell played (generally after having been authorized by the method jouer(int)
-	 * )
-	 * @param ligne row to be played
-	 * @param col col to be played
-	 */	
+	
 	public void validerCoup(int ligne, int col) {
 		
 		if (!joueur) {
@@ -230,12 +197,12 @@ public class Jeu {
 				Saisie.infoMsgOk("Le joueur 2 a gagne", "Bravo");
 		}
 		
-		nbCoups++;  // On sous-entend les this
+		nbCoups++;  
 		if (nbCoups >= opts.getGameHeight() * opts.getGameWidth() && !gagne) {
 			if (opts.netOn)
 				networkPlay(col, false);
 			Saisie.infoMsgOk("Aucun des 2 joueurs n'a su gagner... : partie nulle", "Partie nulle");
-			enCours = false;  // La partie est terminee
+			enCours = false;  
 		}
 		
 		historique[nbCoups - 1] = col;
@@ -254,8 +221,6 @@ public class Jeu {
 				nouveauJeu();
 		}
 		else {
-			if (opts.computerOn && joueur != opts.computerStarts)
-				this.ordiJoue();
 			
 			if (opts.netOn)
 				networkPlay(col, true);
@@ -264,12 +229,6 @@ public class Jeu {
 				
 	}
 	
-	// Methode testant la validite d'un coup
-	/** Verifies if you are allowed to play the chosen cell
-	 * @param ligne row to be verified
-	 * @param col col to be verified
-	 * @return true if you are allowed to play the cell false if not
-	 */	
 	public boolean coupValable(int ligne, int col) {
 		
 		if (ligne == -1) {
@@ -290,44 +249,17 @@ public class Jeu {
 		return true;
 	}
 	
-	// Methode cherchant la 1ere ligne jouable d'une colonne (gravitation...)
-	/** Search the row to be played for a given col (gravity law...)
-	 * @param col col for which the method searches the line
-	 * @return Number of the line corresponding to the col, -1 if the col is full
-	 */	
 	public int searchLine(int col) {
 		for (int i = opts.getGameHeight(); i >= 1; i--) {
 			if (matJeu[i - 1][col - 1] == 0)
 				return i;
 		}
-		return -1; // Aucune ligne n'a ete trouvee : la colonne est remplie
+		return -1; 
 	}
 	
-	/** Asks the computer to play */	
-	public void ordiJoue() {
-		plateau.statusBar.setText("L'ordinateur reflechit : patientez");
-		plateau.repaint();
-		deep.nbCoups = nbCoups;
-		deep.joueurBase = joueur; // A SUPPRIMER
-		//deep.matJeu = matJeu;
-		deep.matJeu = new byte[opts.getGameHeight()][opts.getGameWidth()];
-		deep.matJeu2 = new byte[opts.getGameHeight()][opts.getGameWidth()];
-		for (int i = 0; i < opts.getGameHeight(); i++) {
-			for (int j = 0; j < opts.getGameWidth(); j++) {
-				deep.matJeu[i][j] = matJeu[i][j];
-				deep.matJeu2[i][j] = matJeu[i][j];
-			}
-		}	
-		
-		jouer(deep.ordiJoue(joueur));
-		
-	}
 	
-	/** If network enabled, sends to the other user the move just played locally and waits for the other user to play
-	 * and makes other user's move played locally
-	 * @param col Col to be send to the other user
-	 * @param wait true if waits for a distant user's move false if just sends the local move
-	 */	
+	
+	
 	public void networkPlay(int col, boolean wait) {
 		
 		if (!wait) {
@@ -336,7 +268,6 @@ public class Jeu {
 		}
 		else if (opts.serveur && nbCoups % 2 == 1 || !opts.serveur && nbCoups % 2 == 0) {
 			opts.sc.envoyerCoup(col); // le serveur envoie le coup au client ou inversement
-			//jouer(opts.sc.attenteCoup()); // Ancienne version sans multi-threading pour l'attente de coup
 			lock = true;  // pas le droit de jouer localement tant que le joueur distant n'a pas joue
 			NetworkThread nt = new NetworkThread(opts.sc, this);
 			nt.start();
@@ -344,7 +275,6 @@ public class Jeu {
 		
 	}
 	
-	/** Makes a new game */	
 	public static void nouveauJeu() {
 		Jeu j = new Jeu(true);
 	}

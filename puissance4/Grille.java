@@ -12,9 +12,6 @@ public class Grille extends JFrame implements MouseListener, WindowListener {
 	
 	JToolBar bar = new JToolBar();
 	
-	//ImageIcon ferme = new ImageIcon("fermer.gif");
-	//JButton fermer = new JButton(ferme);
-	
 	ImageIcon pionR = new ImageIcon("pionR.gif");
 	ImageIcon pionV = new ImageIcon("pionV.gif");
 	
@@ -45,11 +42,10 @@ public class Grille extends JFrame implements MouseListener, WindowListener {
 		
 		addWindowListener(this);
 		
-		nbGrilles++;   // Une nouvelle grille a ete creee
+		nbGrilles++;   
 		
 	}
 		
-	/** Adds nbRow * nbCol cells in the Grille object */	
 	public void makeCells(int nbRow, int nbCol, Jeu jeu) {
 		Case c;
 		for (int i = 0; i < nbRow; i++) {
@@ -106,7 +102,7 @@ public class Grille extends JFrame implements MouseListener, WindowListener {
 	
 	public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 		nbGrilles--;
-		if (nbGrilles == 0) // quit if 0 games opened
+		if (nbGrilles == 0) 
 			System.exit(-1);
 	}
 	
