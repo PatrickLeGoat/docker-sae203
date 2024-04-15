@@ -1,3 +1,3 @@
-## Clement Lemaire B2
+## Clement Lemaire B1
 ## Elliot Lebreton B2
-## Ladji Diannissy
+## Ladji Diannissy B2
