@@ -34,7 +34,7 @@ abstract class ServeurClient {
 				entree = in.readLine();
 				if (entree != null) {
 					System.out.println("J'ai reeu un coup de la part de l'autre");
-					jeu.lock = false; // on retire le lock pour pouvoir valider le coup reeu
+					jeu.lock = false; // on retire le lock pour pouvoir valider le coup recu
 					return Integer.parseInt(entree);
 				}
 			}

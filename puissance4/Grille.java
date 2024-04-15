@@ -12,18 +12,6 @@ public class Grille extends JFrame implements MouseListener, ActionListener, Win
 	
 	JToolBar bar = new JToolBar();
 	
-	ImageIcon nou = new ImageIcon("nouv.gif");
-	JButton nouv = new JButton(nou);
-	
-	ImageIcon ope = new ImageIcon("open.gif");
-	JButton open = new JButton(ope);
-	
-	ImageIcon savea = new ImageIcon("saveas.gif");
-	JButton saveas = new JButton(savea);
-	
-	ImageIcon und = new ImageIcon("undo.gif");
-	JButton undo = new JButton(und);
-	
 	//ImageIcon ferme = new ImageIcon("fermer.gif");
 	//JButton fermer = new JButton(ferme);
 	
@@ -61,24 +49,7 @@ public class Grille extends JFrame implements MouseListener, ActionListener, Win
 		nbGrilles++;   // Une nouvelle grille a ete creee
 		
 	}
-	
-	/** Adds the buttons in the toolbar and adds the ActionListeners to them*/	
-	public void makeToolBar() {
-		nouv.addActionListener(this);
-		open.addActionListener(this);
-		saveas.addActionListener(this);
-		undo.addActionListener(this);
-		//fermer.addActionListener(this);
-		comput.addActionListener(this);
 		
-		bar.add(nouv);
-		bar.add(open);
-		bar.add(saveas);
-		bar.add(undo);
-		//bar.add(fermer);
-		bar.add(comput);
-	}
-	
 	/** Adds nbRow * nbCol cells in the Grille object */	
 	public void makeCells(int nbRow, int nbCol, Jeu jeu) {
 		Case c;
@@ -126,39 +97,7 @@ public class Grille extends JFrame implements MouseListener, ActionListener, Win
 		
 	}
 	
-	public void actionPerformed(ActionEvent actionEvent) {
-		JButton src = (JButton)actionEvent.getSource();
-		if (src == undo) {
-			Case c = (Case)this.pane.getComponent(0); // On prend par exemple la 1ere case pour recuperer le Jeu
-			c.jeu.undo();
-		}
-		else if (src == saveas) {
-			Case c = (Case)this.pane.getComponent(0);
-			JFileChooser fc = new JFileChooser();
-			int returnVal = fc.showSaveDialog(this);
-			if (returnVal == JFileChooser.APPROVE_OPTION)
-				c.jeu.enregistrer(fc.getSelectedFile());
-		}
-		else if (src == open) {
-			Case c = (Case)this.pane.getComponent(0);
-			JFileChooser fc = new JFileChooser();
-			int returnVal = fc.showOpenDialog(this);
-			if (returnVal == JFileChooser.APPROVE_OPTION)
-				c.jeu.ouvrir(fc.getSelectedFile());
-		}
-		else if (src == nouv) {
-			Jeu.nouveauJeu();
-		}
-		/*else if (src == fermer) {
-			int ok = Saisie.question_ouinon("Etes-vous ser de vouloir fermer toutes les fenetres ?", "Fermer le programme");
-			if (ok == 0)
-				System.exit(0);
-		}*/
-		else if (src == comput) {
-			Case c = (Case)this.pane.getComponent(0);
-			c.jeu.ordiJoue();
-		}
-	}
+	
 	
 	public void windowActivated(java.awt.event.WindowEvent windowEvent) {
 	}

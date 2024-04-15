@@ -4,7 +4,6 @@ class Computer {
 	int p2;
 	byte[][] matJeu;
 	byte[][] matJeu2;
-	//int colResult;
 	int nbCoups;
 	boolean joueurBase; // cf commentaire de PerdGagne
 	boolean[] forbiddenCols = new boolean[7];
@@ -15,10 +14,7 @@ class Computer {
 		this.p2 = niveau;
 	}
 	
-	/**
-	 * Fait jouer l'ordinateur
-	 * @return Colonne que l'ordinateur joue
-	 */
+	
 	public int ordiJoue(boolean joueur) {
 	
 		forbiddenCols = new boolean[7];

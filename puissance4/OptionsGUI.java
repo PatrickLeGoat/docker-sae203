@@ -2,16 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-/*
- * OptionsGUI.java
- *
- * Created on 12 mars 2004, 18:16
- */
-
-/**
- *
- * @author  Micha�l Perrin
- */
 
 public class OptionsGUI extends JFrame implements ActionListener {
 	
@@ -29,11 +19,11 @@ public class OptionsGUI extends JFrame implements ActionListener {
 	
         
 	JPanel networkPane = new JPanel();
-	JCheckBox networkOn = new JCheckBox("Jouer en r�seau", false);
+	JCheckBox networkOn = new JCheckBox("Jouer en reseau", false);
 	ButtonGroup serveurClient = new ButtonGroup();
 	JRadioButton server = new JRadioButton("Etre serveur", false);
 	JRadioButton client = new JRadioButton("Etre client", true);
-	JTextField ipTextField = new JTextField("Hostname or IP number", 15);
+	JTextField ipTextField = new JTextField("IP du serveur", 15);
 
 	JButton ok = new JButton("Ok");
 	
@@ -128,7 +118,7 @@ public class OptionsGUI extends JFrame implements ActionListener {
 				}
 				
 			} catch (NumberFormatException e) {
-				Saisie.erreurMsgOk("Erreur : le nombre de ligne et le nombre de colonnes doivent �tre des entiers", "Erreur");
+				Saisie.erreurMsgOk("Erreur : le nombre de ligne et le nombre de colonnes doivent etre des entiers", "Erreur");
 			}
 			
 		}

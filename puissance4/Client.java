@@ -1,13 +1,3 @@
-/*
- * Client.java
- *
- * Created on 6 mars 2004, 12:39
- */
-
-/**
- *
- * @author  Michael Perrin
- */
 
 import java.io.*;
 import java.net.*;
@@ -17,7 +7,6 @@ public class Client extends ServeurClient {
 	InetAddress adr;
 	Socket socket;
    
-	/** Creates a new instance of Client */
 	public Client(String adrServeur, Jeu jeu) {
 	
 		super(jeu);
@@ -29,13 +18,12 @@ public class Client extends ServeurClient {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		}
 		catch(Exception e) {
-			System.out.println("Serveur non trouv� ou erreur lors de la connexion au serveur.");
-			System.out.println("V�rifiez que celui-ci existe.");
+			System.out.println("Serveur non trouve ou erreur lors de la connexion au serveur.");
+			System.out.println("Verifiez que celui-ci existe.");
 			System.exit(-1);
 		}
 	}
 	
-	/** Closes the connection */	
 	void closeSocket() {
 	
 		try {
