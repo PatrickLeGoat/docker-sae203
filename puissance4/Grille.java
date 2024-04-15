@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Grille extends JFrame implements MouseListener, ActionListener, WindowListener {
+public class Grille extends JFrame implements MouseListener, WindowListener {
 	static int nbGrilles; // Contient le nombre de fenetres actuellement ouvertes
 	
 	JPanel global = new JPanel();
@@ -32,7 +32,6 @@ public class Grille extends JFrame implements MouseListener, ActionListener, Win
 		gridLay = new GridLayout(nbRow, nbCol, 0, 0);
 		pane.setLayout(gridLay);
 		
-		makeToolBar();
 		global.add(bar, "North");
 		
 		makeCells(nbRow, nbCol, jeu);
