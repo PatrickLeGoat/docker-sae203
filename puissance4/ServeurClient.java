@@ -21,13 +21,13 @@ abstract class ServeurClient {
 			try {
 				entree = in.readLine();
 				if (entree != null) {
-					System.out.println("J'ai reeu un coup de la part de l'autre");
+					System.out.println("J'ai recu un coup de la part de l'autre");
 					jeu.lock = false; 
 					return Integer.parseInt(entree);
 				}
 			}
 			catch(Exception e) {
-				System.out.println("Pb dans l'attente de coup. Je quitte");
+				System.out.println("Probleme dans l'attente de coup. Je quitte");
 				System.exit(-1);
 			}
 		}
