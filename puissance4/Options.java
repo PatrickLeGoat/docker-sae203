@@ -49,13 +49,6 @@ public class Options {
 		return nbRow;
 	}
 	
-	public void initComputer(boolean computerOn, boolean computerStarts, int diff) {
-		this.computerOn = computerOn;
-		this.computerStarts = computerStarts;
-		jeu.deep = new Computer(diff); // on cree tout le temps l'ordinateur, au cas oe l'utilisateur clique sur Jouer...
-		if (computerStarts)
-			jeu.ordiJoue();
-	}
 	
 	public void initNetwork(boolean serveur, String ip) {
 		try {

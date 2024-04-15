@@ -253,13 +253,7 @@ public class Jeu {
 			if (ok == 0)
 				nouveauJeu();
 		}
-		else {
-			if (opts.computerOn && joueur != opts.computerStarts)
-				this.ordiJoue();
-			
-			if (opts.netOn)
-				networkPlay(col, true);
-		}
+		
 			
 				
 	}
@@ -303,25 +297,6 @@ public class Jeu {
 		return -1; // Aucune ligne n'a ete trouvee : la colonne est remplie
 	}
 	
-	/** Asks the computer to play */	
-	public void ordiJoue() {
-		plateau.statusBar.setText("L'ordinateur reflechit : patientez");
-		plateau.repaint();
-		deep.nbCoups = nbCoups;
-		deep.joueurBase = joueur; // A SUPPRIMER
-		//deep.matJeu = matJeu;
-		deep.matJeu = new byte[opts.getGameHeight()][opts.getGameWidth()];
-		deep.matJeu2 = new byte[opts.getGameHeight()][opts.getGameWidth()];
-		for (int i = 0; i < opts.getGameHeight(); i++) {
-			for (int j = 0; j < opts.getGameWidth(); j++) {
-				deep.matJeu[i][j] = matJeu[i][j];
-				deep.matJeu2[i][j] = matJeu[i][j];
-			}
-		}	
-		
-		jouer(deep.ordiJoue(joueur));
-		
-	}
 	
 	/** If network enabled, sends to the other user the move just played locally and waits for the other user to play
 	 * and makes other user's move played locally
@@ -347,101 +322,6 @@ public class Jeu {
 	/** Makes a new game */	
 	public static void nouveauJeu() {
 		Jeu j = new Jeu(true);
-	}
-	
-	/** Saves the game
-	 * @param file file in which the game will be saved
-	 */	
-	public void enregistrer(File file) {
-		try {
-			FileWriter fw = new FileWriter(file);
-			BufferedWriter out = new BufferedWriter(fw);
-			out.write("Puissance 4  Kariboo Mikl\n");  // En-tete de fichier
-			out.write(opts.getGameHeight() + " ");
-			out.write(opts.getGameWidth() + " ");
-			out.write(nbCoups + " ");
-			out.write(deep.p2 + " ");
-			
-			if (opts.computerOn)
-				out.write("1 ");
-			else
-				out.write("0 ");
-			
-			if (opts.computerStarts)
-				out.write("1 \n");
-			else
-				out.write("0 \n");
-			
-			
-			for (int i = 0; i < nbCoups; i++)
-				out.write(historique[i] + " ");
-			
-			out.close();
-		} catch (IOException e) {
-			
-		}
-	}
-	
-	/** Opens a game from a file
-	 * @param file file from which the game will be opened
-	 */	
-	public void ouvrir(File file) {
-		try {
-			FileReader fr = new FileReader(file);
-			BufferedReader out = new BufferedReader(fr);
-			String line = out.readLine();
-			if (line.equals("Puissance 4  Kariboo Mikl")) {  // Test de validite de fichier
-				line = out.readLine();
-				StringTokenizer s = new StringTokenizer(line);
-				int nbR = Integer.parseInt(s.nextToken());
-				int nbC = Integer.parseInt(s.nextToken());
-				int nbCou = Integer.parseInt(s.nextToken());
-				int difficult = Integer.parseInt(s.nextToken());
-				int computerO = Integer.parseInt(s.nextToken());
-				int computerStart = Integer.parseInt(s.nextToken());
-
-				line = out.readLine();
-				out.close();
-				s = new StringTokenizer(line);
-
-				Jeu j = new Jeu(false);
-				j.opts = new Options(nbR, nbC, j);
-				j.deep = new Computer(difficult);
-
-				for (int i = 0; i < nbCou; i++)
-					j.jouer(Integer.parseInt(s.nextToken()));
-
-				// On charge l'ordinateur ici, apres que la partie ait ete chargee, pour eviter des pbs...
-				if (computerO == 1)
-					j.opts.computerOn = true;
-				if (computerStart == 1)
-					j.opts.computerStarts = true;
-			}
-			else
-				Saisie.erreurMsgOk("Le fichier que vous tentez d'ouvrir n'est pas un fichier de Puissance 4 valide.", "Access violation error ;o)");
-			
-		} catch (IOException e) {
-			
-		}
-	}
-	
-	/** Undo the last move */	
-	public void undo() {
-		if (nbCoups != 0) {
-			int col = historique[nbCoups - 1];
-			int ligne = searchLine(col);
-			if (ligne == -1)
-				ligne = 1;
-			else
-				ligne++;
-			matJeu[ligne - 1][col - 1] = 0;
-			joueur = !joueur;
-			nbCoups--;
-			if (!enCours)
-				enCours = true;
-			Case cc = (Case)plateau.pane.getComponent((opts.getGameWidth()) * (ligne - 1) + (col - 1));
-			cc.modifierVal(0);
-		}
 	}
 	
 	public static void main(String[] args) {
