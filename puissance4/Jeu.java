@@ -253,7 +253,13 @@ public class Jeu {
 			if (ok == 0)
 				nouveauJeu();
 		}
-		
+		else {
+			if (opts.computerOn && joueur != opts.computerStarts)
+				this.ordiJoue();
+			
+			if (opts.netOn)
+				networkPlay(col, true);
+		}
 			
 				
 	}
@@ -297,6 +303,25 @@ public class Jeu {
 		return -1; // Aucune ligne n'a ete trouvee : la colonne est remplie
 	}
 	
+	/** Asks the computer to play */	
+	public void ordiJoue() {
+		plateau.statusBar.setText("L'ordinateur reflechit : patientez");
+		plateau.repaint();
+		deep.nbCoups = nbCoups;
+		deep.joueurBase = joueur; // A SUPPRIMER
+		//deep.matJeu = matJeu;
+		deep.matJeu = new byte[opts.getGameHeight()][opts.getGameWidth()];
+		deep.matJeu2 = new byte[opts.getGameHeight()][opts.getGameWidth()];
+		for (int i = 0; i < opts.getGameHeight(); i++) {
+			for (int j = 0; j < opts.getGameWidth(); j++) {
+				deep.matJeu[i][j] = matJeu[i][j];
+				deep.matJeu2[i][j] = matJeu[i][j];
+			}
+		}	
+		
+		jouer(deep.ordiJoue(joueur));
+		
+	}
 	
 	/** If network enabled, sends to the other user the move just played locally and waits for the other user to play
 	 * and makes other user's move played locally
@@ -323,6 +348,11 @@ public class Jeu {
 	public static void nouveauJeu() {
 		Jeu j = new Jeu(true);
 	}
+	
+	
+	
+	
+	
 	
 	public static void main(String[] args) {
 		
