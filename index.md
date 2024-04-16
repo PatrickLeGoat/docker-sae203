@@ -1,6 +1,6 @@
 **[Projet SAE 2.03 Equipe 09]{.underline}**
 
-**[Titre du projet :]{.underline}**
+<u> **Titre du projet :** <u/>
 
 Installation d'un jeu en réseau en java avec docker.
 
