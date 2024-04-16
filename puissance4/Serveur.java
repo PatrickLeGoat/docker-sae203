@@ -1,17 +1,6 @@
 import java.io.*;
 import java.net.*;
 
-/*
- * Serveur.java
- *
- * Created on 6 mars 2004, 14:28
- */
-
-/**
- *
- * @author  Michael Perrin
- */
-
 public class Serveur extends ServeurClient {
 	
 	ServerSocket ss;

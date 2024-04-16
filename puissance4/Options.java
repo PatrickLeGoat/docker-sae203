@@ -1,4 +1,6 @@
-public class Options {
+public class Options
+
+{
 	private int nbRow;			
 	private int nbCol;			
 	boolean computerOn = false;	
