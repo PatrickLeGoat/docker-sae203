@@ -17,7 +17,7 @@ B2 - Ladji Dianissy
 -   Proposer un service réseau ( ou autre ) à l'aide de docker.
 
 -   Pour notre part nous avons pour projet de créer un jeu de société
-    > (puissance 4) en ligne qui utilise l'adresse IP du réseau.
+      (puissance 4) en ligne qui utilise l'adresse IP du réseau.
 
 <u> <b> Étapes de conception: </b> </u>
 
@@ -30,20 +30,18 @@ B2 - Ladji Dianissy
 -   Écriture du code sur la partie réseau ( serveur et client ).
 
 -   Écriture de la partie IHM qui permet d'afficher la grille de jeu et
-    > la page d\'accueil.
+     la page d\'accueil.
 
 <u> <b> Description des fichiers créés: </b> </u>
 
 -   dans le main:
 
     -   DockerFile: Permet de faire le pont entre les 2 joueurs ( comme
-        > une antenne relais )
+        une antenne relais )
 
     -   Dossier puissance 4 avec tous les codes.
 
-```{=html}
-<!-- -->
-```
+
 -   dans le gh-pages:
 
     -   index.md: texte du compte-rendu
@@ -51,6 +49,7 @@ B2 - Ladji Dianissy
     -   config.yml: code du site web et thème de la page
 
 <u> <b> Utilisation du jeu : </b> </u>
+
 Pour pouvoir jouer à notre jeu en ligne il faut un hôte et un client
 présent sur le même serveur.
 
