@@ -71,34 +71,39 @@ jouer avec son ami.
 1ère étape du jeu le choix du nombre de ligne et de colonne ( en général
 on reste sur 6 lignes et 7 colonnes )
 
-![](./image3.png){width="5.854166666666667in"
-height="1.1979166666666667in"}
+![image3](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/a4819460-aa00-4498-a152-b3dbc1e1072c)
+
 
 Ensuite les deux joueurs cochent la cache "Jouer en réseau" puis l'hôte
 choisit d\'être le "serveur" et son ami choisie d'être le "client".
 
-![](./image5.png){width="4.28125in" height="2.09375in"}
+![image5](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/bda01a1d-e122-441e-ae23-e749b4cd6118)
+
 
 Les deux personnes mettent l'adresse IP réseau de l'hôte puis cliquez
 sur ok pour lancer la partie.
 
-![](./image4.png){width="5.0625in" height="3.7395833333333335in"}
+![image4](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/d2d3a79c-cb8a-4ec8-b992-3a28695cf200)
+
 
 Voici comment la grille de jeu est faite, le joueur 1 ( l\'hôte )
 commence la partie puis ne peut pas jouer tant que le joueur 2 ( le
 client ) n'a pas placé son jeton.
 
-![](./image2.png){width="3.3125in" height="1.5208333333333333in"}
+![image2](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/db8a8d52-95de-45bc-bc83-0cf1b13d5af4)
+
 
 Lorsqu'un joueur essaye de jouer deux fois d\'affilée, un message
 d'erreur apparaît.
 
-![](./image1.png){width="2.75in" height="1.2291666666666667in"}
+![image1](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/31a4d072-1b50-4797-afda-1fbab9b169eb)
+
 
 Quand un joueur gagne la partie, un message apparaît sur les écrans des
 deux joueurs informant que le joueur ( 1 ou 2 ) a gagné la partie.
 
-![](./image6.png){width="5.177083333333333in" height="1.5in"}
+![image6](https://github.com/PatrickLeGoat/docker-sae203/assets/159245876/b08b9403-104e-43db-a877-64bcb619e249)
+
 
 Enfin, le jeu redemande de faire une partie au deux joueurs puis recréer
 une partie si un des deux joueurs a cliquer sur "oui" ou sinon affiche
