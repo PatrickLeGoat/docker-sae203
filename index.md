@@ -1,10 +1,10 @@
-**[Projet SAE 2.03 Equipe 09]{.underline}**
+<u> <b> Projet SAE 2.03 Equipe 09 </b> </u>
 
-<u> **Titre du projet :** <u/>
+<u> <b> Titre du projet : </b> </u>
 
 Installation d'un jeu en réseau en java avec docker.
 
-**[Membre de l'équipe :]{.underline}**
+<u> <b> Membre de l'équipe : </b> </u>
 
 B2 - Elliot Lebreton
 
@@ -12,14 +12,14 @@ B1 - Clément Lemaire
 
 B2 - Ladji Dianissy
 
-**[But de la SAE:]{.underline}**
+<u> <b> But de la SAE: </b> </u>
 
 -   Proposer un service réseau ( ou autre ) à l'aide de docker.
 
 -   Pour notre part nous avons pour projet de créer un jeu de société
     > (puissance 4) en ligne qui utilise l'adresse IP du réseau.
 
-**[Étapes de conception:]{.underline}**
+<u> <b> Étapes de conception: </b> </u>
 
 -   Création de l\'arborescence pour recevoir tous les fichiers rangés.
 
@@ -32,7 +32,7 @@ B2 - Ladji Dianissy
 -   Écriture de la partie IHM qui permet d'afficher la grille de jeu et
     > la page d\'accueil.
 
-**[Description des fichiers créés:]{.underline}**
+<u> <b> Description des fichiers créés: </b> </u>
 
 -   dans le main:
 
@@ -50,8 +50,7 @@ B2 - Ladji Dianissy
 
     -   config.yml: code du site web et thème de la page
 
-**[Utilisation du jeu :]{.underline}**
-
+<u> <b> Utilisation du jeu : </b> </u>
 Pour pouvoir jouer à notre jeu en ligne il faut un hôte et un client
 présent sur le même serveur.
 
@@ -66,7 +65,7 @@ choisir la taille de la grille pour jouer sur petit ou grand espace.
 Une fois cela fait, il suffit d'appuyer sur entrée et de commencer à
 jouer avec son ami.
 
-**[Démonstration du jeu :]{.underline}**
+<u> <b> Démonstration du jeu : </b> </u>
 
 1ère étape du jeu le choix du nombre de ligne et de colonne ( en général
 on reste sur 6 lignes et 7 colonnes )
