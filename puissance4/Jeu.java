@@ -242,7 +242,7 @@ public class Jeu {
 		}
 		
 		if (lock) {
-			Saisie.erreurMsgOk("Ce n'est pas e vous de jouer", "Erreur");
+			Saisie.erreurMsgOk("Ce n'est pas a vous de jouer", "Erreur");
 			return false;
 		}
 		
